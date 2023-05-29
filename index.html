@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>To do List each every day</title>
+  <link rel="stylesheet" href="simple_todo_list.css">
+  <script defer src="simple_todo_list.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div id="newtask">
+      <div class="todo">
+        <div class="todo__input">
+          <input class="todo__text" type="text" placeholder="Введите новое дело">
+          <span class="todo__add"></span>
+        </div>
+        <select class="todo__options">
+          <option value="active">активные</option> <!-- Опция фильтра для активных задач -->
+          <option value="completed">завершённые</option> <!-- Опция фильтра для завершённых задач -->
+          <option value="deleted">удалённые</option> <!-- Опция фильтра для удалённых задач -->
+          <option value="all">все</option> <!-- Опция фильтра для показа всех задач -->
+        </select>
+        <span class="todo__due">
+          <input class="todo__due-input" type="date"> <!-- Поле для указания срока выполнения задачи -->
+        </span>
+        <div class="todo__items-wrapper">
+          <ul class="todo__items" data-todo-option="active"></ul>
+        </div>        
+        <ul class="todo__items" data-todo-option="active"></ul> <!-- Список задач -->
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
