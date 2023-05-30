@@ -112,19 +112,30 @@ create(text, dueDate) {
         colorModal.style.display = 'none';
       });
     });
+    
     const helpButton = document.getElementById('helpButton');
     const helper = document.getElementById('helper');
+    let helperTimeout;
     
-    helpButton.addEventListener('mouseenter', showHelper);
-    helpButton.addEventListener('mouseleave', hideHelper);
+    helpButton.addEventListener('click', toggleHelper);
+    
+    function toggleHelper() {
+      if (helper.style.display === 'block') {
+        hideHelper();
+      } else {
+        showHelper();
+      }
+    }
     
     function showHelper() {
       helper.style.display = 'block';
+      clearTimeout(helperTimeout); // Очищаем предыдущий таймер, если есть
+      helperTimeout = setTimeout(hideHelper, 5000); // Скрываем блок помощника через 5 секунд
     }
     
     function hideHelper() {
       helper.style.display = 'none';
+      clearTimeout(helperTimeout); // Очищаем таймер, чтобы блок не скрывался автоматически
     }
-
-
+        
 
