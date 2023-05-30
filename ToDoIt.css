@@ -50,6 +50,7 @@ body{
     background: #f0acff;
 }
 .container{
+     overflow: auto;
     width: 40%;
     min-width: 450px;
     position: relative;
