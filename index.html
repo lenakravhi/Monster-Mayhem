@@ -3,7 +3,7 @@
   <meta charset="utf-8"> <!-- вказує на використання кодування UTF-8, яке підтримує більшість символів, включаючи український алфавіт -->
   <meta http-equiv="Content-Language" content="uk"> <!-- визначає мову контенту сторінки як українську (uk). -->
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>To do It each every day</title>
+  <title>Task List each every day</title>
   <link rel="stylesheet" href="ToDoIt.css">
   <script defer src="ToDoIt.js"></script>
 </head>
@@ -30,6 +30,40 @@
         <ul class="todo__items" data-todo-option="active"></ul> <!-- Список завдань -->
       </div>
     </div>
+    <button id="changeColorButton">Змінити колір фона</button>
+    <div id="colorModal" class="modal">
+      <div class="modal-content">
+        <h2>Выберите цвет фона</h2>
+        <input type="color" id="colorPicker">
+        <button id="applyColorButton"> Застосувати</button>
+      </div>
+    </div>
   </div>
+  <button id="helpButton">Допомога</button>
+  <div id="helper"><p>Ласкаво просимо на наш сайт! Ось деякі інструкції, щоб допомогти вам використовувати його:</p>
+    <ul>
+      <li>Використовуйте кнопку "Плюс" для створення нового елемента або завдання.</li>
+      <li>При натисканні на кнопку "Плюс" при не заповненому полі вибиватиметься відповідне віконце. </li>
+      <li>Натисніть на завдання, щоб відзначити його як виконане або видалити.</li>
+      <li>Використовуйте фільтри, щоб переглянути лише активні, завершені, видалені або всі елементи.</li>
+      <li>Ви можете змінити колір фону, натиснувши кнопку "Змінити колір фону" та вибравши бажаний колір.</li>
+      <li>Ви можете вказати термін виконання завдання.</li>
+    </ul></div>
+    <button id="languageButton">Изменить язык</button>
+    <div id="languageModal" class="modal">
+      <div class="modal-content">
+        <h2>Выберите язык</h2>
+        <select id="languageSelect">
+          <option value="en">English</option>
+          <option value="fr">Français</option>
+          <option value="es">Español</option>
+          <!-- Добавьте другие языки по необходимости -->
+        </select>
+        <button id="applyLanguageButton">Применить</button>
+      </div>
+    </div>
+    
+    
 </body>
 </html>
+
