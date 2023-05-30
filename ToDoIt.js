@@ -96,4 +96,67 @@ create(text, dueDate) {
     };
     // Ініціалізація списку завдань під час завантаження сторінки
     todo.init();
+    document.addEventListener('DOMContentLoaded', function() {
+      var changeColorButton = document.querySelector('.container button');
+      var colorModal = document.querySelector('.container .modal');
+      var colorPicker = document.querySelector('.container .modal-content input[type="color"]');
+      var applyColorButton = document.querySelector('.container .modal-content button');
     
+      changeColorButton.addEventListener('click', function() {
+        colorModal.style.display = 'block';
+      });
+    
+      applyColorButton.addEventListener('click', function() {
+        var selectedColor = colorPicker.value;
+        document.body.style.backgroundColor = selectedColor;
+        colorModal.style.display = 'none';
+      });
+    });
+    const helpButton = document.getElementById('helpButton');
+    const helper = document.getElementById('helper');
+    
+    helpButton.addEventListener('mouseenter', showHelper);
+    helpButton.addEventListener('mouseleave', hideHelper);
+    
+    function showHelper() {
+      helper.style.display = 'block';
+    }
+    
+    function hideHelper() {
+      helper.style.display = 'none';
+    }
+// Обработчик события нажатия на кнопку "Изменить язык"
+document.getElementById('languageButton').addEventListener('click', function() {
+  // Показываем модальное окно для выбора языка
+  document.getElementById('languageModal').style.display = 'block';
+});
+
+// Обработчик события нажатия на кнопку "Применить"
+document.getElementById('applyLanguageButton').addEventListener('click', function() {
+  // Получаем выбранный язык из выпадающего списка
+  var selectedLanguage = document.getElementById('languageSelect').value;
+  
+  // Выполняем действия для изменения языка на сайте
+  changeLanguage(selectedLanguage);
+  
+  // Скрываем модальное окно
+  document.getElementById('languageModal').style.display = 'none';
+});
+
+// Функция изменения языка на сайте
+function changeLanguage(language) {
+  // Здесь вы можете добавить код для изменения текстов на сайте в соответствии с выбранным языком
+  if (language === 'en') {
+    document.getElementById('changeColorButton').textContent = 'Change Background Color';
+    // Изменить другие тексты на английский
+  } else if (language === 'fr') {
+    document.getElementById('changeColorButton').textContent = 'Changer la couleur de fond';
+    // Изменить другие тексты на французский
+  } else if (language === 'es') {
+    document.getElementById('changeColorButton').textContent = 'Cambiar color de fondo';
+    // Изменить другие тексты на испанский
+  }
+}
+
+
+
