@@ -10,30 +10,28 @@
 .container:before {
   content: "My Task List";
   position: absolute;
-  top: -80px; /* Уменьшите значение, чтобы снизить отступ сверху */
+  top: -80px; /* Зменште значення, щоб знизити відступ зверху */
   left: 0;
   right: 0;
   text-align: center;
-  font-size: 40px; /* Уменьшите размер шрифта */
-  line-height: 50px; /* Увеличьте высоту строки */
+  font-size: 40px; /* Зменшіть розмір шрифту */
+  line-height: 50px; /* Збільшіть висоту рядка */
   padding: 10px 0;
-  z-index: 1; /* Добавьте свойство z-index */
+  z-index: 1; /* Додайте властивість z-index */
 }
-
 
 @media (max-width: 480px) {
-  /* Стили для маленьких экранов (ширина до 480 пикселей) */
+ /* Стилі для маленьких екранів (ширина до 480 пікселів) */
   .container button {
-    white-space: nowrap; /* Запретить перенос текста на новую строку */
-    overflow: hidden; /* Скрыть обрезанный текст */
-    text-overflow: ellipsis; /* Добавить многоточие для обрезанного текста */
-    width: 100%; /* Занимать всю ширину доступной области */
-    box-sizing: border-box; /* Учесть padding и border в ширине кнопки */
+    white-space: nowrap; /* Заборонити перенесення тексту на новий рядок */
+    overflow: hidden; /* Приховати обрізаний текст */
+    text-overflow: ellipsis; /* Додати крапку для обрізаного тексту */
+    width: 100%; /* Займати всю ширину доступної області */
+    box-sizing: border-box; /* Врахувати padding та border у ширині кнопки */
   }
 }
-
 @media screen and (max-width: 480px) {
-  /* Здесь настройте стили для маленьких экранов, например: */
+  /* Тут налаштуйте стилі для маленьких екранів, наприклад: */
   .container {
     padding: 10px;
   }
@@ -42,7 +40,18 @@
   width: 100%;
   max-width: 960px;
 }
+.container button {
+  overflow: visible;
+  white-space: nowrap;
+}
 
+.todo__options {
+  margin-bottom: 5px; /* Встановіть бажаний відступ у пікселях */
+}
+
+.todo__items-wrapper {
+  margin-top: 15px; /* Встановіть бажаний відступ у пікселях */
+}
 
 /*Цей блок встановлює висоту всього тіла документа та колір*/
 body{
@@ -50,7 +59,6 @@ body{
     background: #f0acff;
 }
 .container{
-     overflow: auto;
     width: 40%;
     min-width: 450px;
     position: relative;
@@ -59,8 +67,8 @@ body{
     left: 50%;
     background: white;
     border-radius: 10px;
-    z-index: 1; /* Устанавливаем z-index, чтобы контейнер был на переднем плане */
-}
+    z-index: 1; /* Встановлюємо z-index, щоб контейнер був на передньому плані */
+  }
 /* задає стилі для блоку додавання нового завдання.*/
 #newtask{
   position: relative;
