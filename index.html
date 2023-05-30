@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8"> <!-- вказує на використання кодування UTF-8, яке підтримує більшість символів, включаючи український алфавіт -->
+  <meta http-equiv="Content-Language" content="uk"> <!-- визначає мову контенту сторінки як українську (uk). -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>To do It each every day</title>
+  <link rel="stylesheet" href="css/ToDoIt.css">
+  <script defer src="js/ToDoIt.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div id="newtask">
+      <div class="todo">
+        <div class="todo__input">
+          <input class="todo__text" type="text" placeholder="Введіть нову справу">
+          <span class="todo__add"></span>
+        </div>
+        <select class="todo__options">
+          <option value="active">активні</option> <!-- Опція фільтра для активних завдань -->
+          <option value="completed">завершені</option> <!-- Опція фільтра для завершених завдань -->
+          <option value="deleted">видалені</option> <!-- Опція фільтра для видалених завдань -->
+          <option value="all">всі</option> <!-- Опція фільтра для показу всіх завдань -->
+        </select>
+        <span class="todo__due">
+        <input class="todo__due-input" type="date"> <!-- Поле для вказівки терміну виконання завдання -->
+        </span>
+        <div class="todo__items-wrapper">
+          <ul class="todo__items" data-todo-option="active"></ul>
+        </div>        
+        <ul class="todo__items" data-todo-option="active"></ul> <!-- Список завдань -->
+      </div>
+    </div>
+  </div>
+</body>
+</html>
