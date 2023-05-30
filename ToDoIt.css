@@ -10,14 +10,22 @@
 .container:before {
   content: "My Task List";
   position: absolute;
-  top: -100px; /* Регулюйте значення, щоб налаштувати відступ зверху */
+  top: -80px; /* Уменьшите значение, чтобы снизить отступ сверху */
   left: 0;
   right: 0;
   text-align: center;
-  font-size: 50px;
-  line-height: 30px;
+  font-size: 40px; /* Уменьшите размер шрифта */
+  line-height: 50px; /* Увеличьте высоту строки */
   padding: 10px 0;
 }
+
+@media (max-width: 480px) {
+  .container:before {
+    font-size: 30px; /* Уменьшите размер шрифта для мобильных устройств */
+    line-height: 40px; /* Увеличьте высоту строки для мобильных устройств */
+  }
+}
+
 /*Цей блок встановлює висоту всього тіла документа та колір*/
 body{
     height: 100vh;
