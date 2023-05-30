@@ -96,12 +96,21 @@ create(text, dueDate) {
     };
     // Ініціалізація списку завдань під час завантаження сторінки
     todo.init();
+    //Ця подія очікує на повне завантаження DOM, перш ніж виконувати код всередині обробника. 
+    //Це гарантує, що весь HTML-код буде доступним для маніпуляцій.
     document.addEventListener('DOMContentLoaded', function() {
+      //Цей рядок вибирає першу кнопку, яка знаходиться всередині елемента з класом "container".
       var changeColorButton = document.querySelector('.container button');
+      //Цей рядок вибирає модальне вікно, що знаходиться всередині елемента з класом "container".
       var colorModal = document.querySelector('.container .modal');
+      //Цей рядок вибирає елемент <input> з атрибутом type="color", 
+      //який знаходиться всередині елемента з класом "modal-content", який, у свою чергу, знаходиться всередині елемента з класом "container". 
+      //Це надає обраний елемент змінної colorPicker.
       var colorPicker = document.querySelector('.container .modal-content input[type="color"]');
+      //Цей рядок вибирає кнопку, яка знаходиться всередині елемента з класом "modal-content",
+      // який, у свою чергу, знаходиться всередині елемента з класом "container". Це надає обрану кнопку змінної applyColorButton.
       var applyColorButton = document.querySelector('.container .modal-content button');
-    
+    //Цей код додає обробник події "click" на кнопку changeColorButton. Коли користувач натискає кнопку, виконується функція всередині обробника.
       changeColorButton.addEventListener('click', function() {
         colorModal.style.display = 'block';
       });
@@ -115,6 +124,7 @@ create(text, dueDate) {
     
     const helpButton = document.getElementById('helpButton');
     const helper = document.getElementById('helper');
+    //Цей рядок повідомляє змінну helperTimeout, яка буде використовуватися для зберігання ідентифікатора таймера.
     let helperTimeout;
     
     helpButton.addEventListener('click', toggleHelper);
@@ -129,13 +139,12 @@ create(text, dueDate) {
     
     function showHelper() {
       helper.style.display = 'block';
-      clearTimeout(helperTimeout); // Очищаем предыдущий таймер, если есть
-      helperTimeout = setTimeout(hideHelper, 5000); // Скрываем блок помощника через 5 секунд
+      clearTimeout(helperTimeout); // Очищаємо попередній таймер, якщо є
+      helperTimeout = setTimeout(hideHelper, 5000); // Приховуємо блок помічника за 5 секунд
     }
     
     function hideHelper() {
       helper.style.display = 'none';
-      clearTimeout(helperTimeout); // Очищаем таймер, чтобы блок не скрывался автоматически
+      clearTimeout(helperTimeout); // Очищаємо таймер, щоб блок не ховався автоматично
     }
-        
-
+     
