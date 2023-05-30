@@ -17,6 +17,7 @@
   font-size: 40px; /* Уменьшите размер шрифта */
   line-height: 50px; /* Увеличьте высоту строки */
   padding: 10px 0;
+  z-index: 1; /* Добавьте свойство z-index */
 }
 
 @media (max-width: 480px) {
