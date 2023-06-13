@@ -1,5 +1,4 @@
-﻿using UnityEngine;
-using System.Collections;
+using UnityEngine;
 
 public class Character : Unit
 {
@@ -11,16 +10,19 @@ public class Character : Unit
         get { return lives; }
         set
         {
-           if (value < 5) lives = value;
+            // Перевіряємо, щоб значення життів було не більше 5
+            if (value < 5)
+                lives = value;
+
             livesBar.Refresh();
         }
     }
     private LivesBar livesBar;
 
     [SerializeField]
-    private float speed = 3.0F;
+    private float speed = 3.0f;
     [SerializeField]
-    private float jumpForce = 15.0F;
+    private float jumpForce = 15.0f;
 
     private bool isGrounded = false;
 
@@ -36,6 +38,7 @@ public class Character : Unit
     private Animator animator;
     private SpriteRenderer sprite;
 
+    // Підключення компонентів та завантаження снаряду
     private void Awake()
     {
         livesBar = FindObjectOfType<LivesBar>();
@@ -46,67 +49,81 @@ public class Character : Unit
         bullet = Resources.Load<Bullet>("Bullet");
     }
 
+    // Оновлення стану героя
     private void FixedUpdate()
     {
         CheckGround();
     }
 
+    // Обробка введення користувача
     private void Update()
     {
-        if (isGrounded) State = CharState.Idle;
+        if (isGrounded)
+            State = CharState.Idle;
 
-        if (Input.GetButtonDown("Fire1")) Shoot();
-        if (Input.GetButton("Horizontal")) Run();
-        if (isGrounded && Input.GetButtonDown("Jump")) Jump();
+        if (Input.GetButtonDown("Fire1"))
+            Shoot();
+        if (Input.GetButton("Horizontal"))
+            Run();
+        if (isGrounded && Input.GetButtonDown("Jump"))
+            Jump();
     }
 
+    // Рух героя
     private void Run()
     {
         Vector3 direction = transform.right * Input.GetAxis("Horizontal");
 
         transform.position = Vector3.MoveTowards(transform.position, transform.position + direction, speed * Time.deltaTime);
 
-        sprite.flipX = direction.x < 0.0F;
+        sprite.flipX = direction.x < 0.0f;
 
-        if (isGrounded) State = CharState.Run;
+        if (isGrounded)
+            State = CharState.Run;
     }
 
+    // Перескок героя
     private void Jump()
     {
         rigidbody.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
     }
 
+    // Вистріл героя
     private void Shoot()
     {
-        Vector3 position = transform.position; position.y += 0.8F;
+        Vector3 position = transform.position;
+        position.y += 0.8f;
         Bullet newBullet = Instantiate(bullet, position, bullet.transform.rotation) as Bullet;
 
         newBullet.Parent = gameObject;
-        newBullet.Direction = newBullet.transform.right * (sprite.flipX ? -1.0F : 1.0F);
+        newBullet.Direction = newBullet.transform.right * (sprite.flipX ? -1.0f : 1.0f);
     }
 
+    // Обробка отримання пошкоджень
     public override void ReceiveDamage()
     {
         Lives--;
 
         rigidbody.velocity = Vector3.zero;
-        rigidbody.AddForce(transform.up * 8.0F, ForceMode2D.Impulse);
+        rigidbody.AddForce(transform.up * 8.0f, ForceMode2D.Impulse);
 
         Debug.Log(lives);
     }
 
+    // Перевірка землі під героєм
     private void CheckGround()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.3F);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.3f);
 
         isGrounded = colliders.Length > 1;
 
-        if (!isGrounded) State = CharState.Jump;
+        if (!isGrounded)
+            State = CharState.Jump;
     }
 
+    // Обробка зіткнення зі снарядом
     private void OnTriggerEnter2D(Collider2D collider)
     {
-
         Bullet bullet = collider.gameObject.GetComponent<Bullet>();
         if (bullet && bullet.Parent != gameObject)
         {
@@ -115,7 +132,7 @@ public class Character : Unit
     }
 }
 
-
+// Перелік станів героя
 public enum CharState
 {
     Idle,
