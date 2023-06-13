@@ -1,22 +1,29 @@
-﻿using UnityEngine;
-using System.Collections;
+using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
     [SerializeField]
-    private float speed = 2.0F;
+    private float speed = 2.0f;
 
     [SerializeField]
     private Transform target;
 
     private void Awake()
     {
-        if (!target) target = FindObjectOfType<Character>().transform;
+        // Якщо не задана ціль, то шукаємо об'єкт Character у сцені
+        if (!target)
+        {
+            target = FindObjectOfType<Character>().transform;
+        }
     }
 
     private void Update()
     {
-        Vector3 position = target.position;         position.z = -10.0F;
+        // Отримуємо позицію цілі
+        Vector3 position = target.position;
+        // Задаємо глибину (z-координату) камери
+        position.z = -10.0f;
+        // Плавно переміщуємо камеру до позиції цілі
         transform.position = Vector3.Lerp(transform.position, position, speed * Time.deltaTime);
     }
 }
